@@ -3,18 +3,19 @@
 Character::Character(void)
 {
 	this->setName("NPC");
-	index = 0;
+	this->index = 0;
 }
 
 Character::Character(string name)
 {
 	this->setName(name);
-	index = 0;
+	this->index = 0;
 }
 
 Character::Character(const Character& clone)
 {
 	this->setName(clone.getName());
+	this->index = clone.index;
 	int i = 0;
 
 	while (i <= this->index)
@@ -27,6 +28,7 @@ Character::Character(const Character& clone)
 Character&	Character::operator=(const Character& clone)
 {
 	this->setName(clone.getName());
+	this->index = clone.index;
 	int i = 0;
 
 	while (i <= this->index)
@@ -39,13 +41,14 @@ Character&	Character::operator=(const Character& clone)
 
 Character::~Character()
 {
-	int i = 0;
+	// int i = 0;
 
-	while (i <= this->index)
-	{
-		delete this->inventory[i];
-		i++;
-	}
+	// while (i <= this->index)
+	// {
+	// 	if (this->inventory[i])
+	// 		delete this->inventory[i];
+	// 	i++;
+	// }
 }
 
 std::string const & Character::getName() const
@@ -60,10 +63,10 @@ void				Character::setName(string name)
 
 void 				Character::equip(AMateria* m)
 {
-	if (index < 4)
+	if (this->index < 4)
 	{
-		this->inventory[index] = m->clone();
-		index++;
+		this->inventory[this->index] = m->clone();
+		this->index++;
 	}
 }
 

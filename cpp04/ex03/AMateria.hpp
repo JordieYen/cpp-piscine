@@ -5,6 +5,8 @@
 #include "ICharacter.hpp"
 using std::string;
 
+class ICharacter;
+
 class AMateria
 {
 	public:
